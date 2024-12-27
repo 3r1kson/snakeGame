@@ -22,6 +22,7 @@ screen.onkey(snake.down_move, "Down")
 screen.onkey(snake.left_move,"Left")
 screen.onkey(snake.right_move,"Right")
 
+
 while game_on:
     screen.update()
     time.sleep(0.1)
@@ -33,12 +34,12 @@ while game_on:
         snake.extend()
 
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_on = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_on = False
-            score.game_over()
+            score.reset()
+            snake.reset()
 
 screen.exitonclick()
